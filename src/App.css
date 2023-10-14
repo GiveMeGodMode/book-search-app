@@ -1,38 +1,240 @@
-.App {
-  text-align: center;
+input,
+select {
+  outline: none;
+  border: none;
+  padding: 5px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  position: relative;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app__loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(180, 180, 180, 0.212);
+  z-index: 100;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
+}
+.header__wrapper {
+  width: 100%;
+  height: 320px;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media (max-width: 576px) {
+  .header__wrapper {
+    height: 400px;
+  }
+}
+.header__photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+.header__photo img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.search-input {
+  width: 50%;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .search-input {
+    width: 70%;
+  }
+}
+@media (max-width: 576px) {
+  .search-input {
+    width: 90%;
+  }
+}
+
+.search-input input {
+  width: 100%;
+  font-size: 20px;
+  display: block;
+  padding-right: 35px;
+}
+.search-input::after {
+  content: "";
+  background: url("./assets/loupe.png") 0 0 / cover no-repeat;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.search-block {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+@media (max-width: 576px) {
+  .search-block {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}
+.search-filters {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 1400px) {
+  .search-filters {
+    width: 60%;
+  }
+}
+@media (max-width: 1200px) {
+  .search-filters {
+    width: 70%;
+  }
+}
+@media (max-width: 992px) {
+  .search-filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+.my-select {
+  gap: 7px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+}
+@media (max-width: 576px) {
+  .my-select {
+    gap: 7px;
+    align-items: center;
+    flex-direction: column;
+    font-size: 18px;
+  }
+}
+.my-select select {
+  min-width: 200px;
+}
+.book-card {
+  padding: 20px 5px 10px;
+  background-color: rgb(230, 230, 230);
+  border: none;
+  transition: all 0.3s;
+}
+.book-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.book-card__img {
+  width: 128px;
+  height: 191px;
+  margin: auto;
+  border: solid gray 1px;
+}
+.book-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.book-card__category {
+  color: gray;
+  text-decoration: underline;
+}
+.book-card__title {
+  font-weight: 500;
+}
+.book-card__author {
+  font-size: 16px;
+  color: gray;
+  max-height: 50px;
+  overflow: auto;
+}
+.books__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.bookId__wrapper {
+  display: flex;
+  gap: 50px;
+  align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.bookId__photo {
+  min-width: 20%;
+  background-color: rgb(243, 243, 243);
+  padding: 20px;
+  border-radius: 5px;
+}
+.bookId__photo img {
+  width: 100%;
+  height: 100%;
+}
+.bookId__categories {
+  color: gray;
+  font-size: 16px;
+}
+.bookId__title {
+  font-size: 24px;
+}
+.bookId__author {
+  font-size: 16px;
+  color: gray;
+  text-decoration: underline;
+}
+.bookId__description {
+  min-height: 200px;
+  border: solid rgb(185, 185, 185) 1px;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .bookId__wrapper {
+    flex-direction: column;
+    gap: 20px;
   }
-  to {
-    transform: rotate(360deg);
+  .bookId__photo {
+    min-width: 80%;
   }
+  .bookId__title {
+    text-align: center;
+  }
+  .bookId__description {
+    border: none;
+    padding: 0;
+  }
+}
+.bookId__evolved {
+  text-decoration: underline;
+  font-style: italic;
+  color: gray;
+  font-size: 18px;
+  font-weight: 400;
 }
